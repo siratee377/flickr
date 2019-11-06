@@ -24,4 +24,10 @@
         android:text="TextView"
         android:layout_centerHorizontal="true"/>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </RelativeLayout>

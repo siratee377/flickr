@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity
 
     Button mButton;
     TextView mTextView;
+    ImageView mImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         mButton = findViewById(R.id.button);
         mTextView = findViewById(R.id.textView);
+        mImageView = findViewById(R.id.imageView);
 
         final RequestParams params = new RequestParams();
         params.put(FlickrQuery_key, API_KEY);
@@ -50,6 +54,8 @@ public class MainActivity extends AppCompatActivity
                 networking(params);
             }
         });
+
+
 
 
     }
@@ -79,6 +85,7 @@ public class MainActivity extends AppCompatActivity
     private void updateUI(Model data) {
         Log.d(LOGCAT_TAG, "updateUI: " + data.getLink());
        mTextView.setText(data.getLink());
+        Picasso.get().load(data.getUrl()).into(mImageView);
 
     }
 }
